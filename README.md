@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/davidchin/react-input-range.svg?branch=master)](https://travis-ci.org/davidchin/react-input-range)
 
 ## Demo
+
 A CodePen demo is available [here](http://codepen.io/davidchin/full/GpNvqw/).
 
 ## Installation
@@ -16,18 +17,19 @@ A CodePen demo is available [here](http://codepen.io/davidchin/full/GpNvqw/).
 ## Usage
 
 To accept min/max value:
+
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import InputRange from 'react-input-range';
+import React from "react"
+import ReactDOM from "react-dom"
+import InputRange from "react-input-range"
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       value: { min: 2, max: 10 },
-    };
+    }
   }
 
   render() {
@@ -36,24 +38,23 @@ class App extends React.Component {
         maxValue={20}
         minValue={0}
         value={this.state.value}
-        onChange={value => this.setState({ value })} />
-    );
+        onChange={value => this.setState({ value })}
+      />
+    )
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+ReactDOM.render(<App />, document.getElementById("app"))
 ```
 
 To accept a single value:
+
 ```jsx
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = { value: 10 };
+    this.state = { value: 10 }
   }
 
   render() {
@@ -62,26 +63,27 @@ class App extends React.Component {
         maxValue={20}
         minValue={0}
         value={this.state.value}
-        onChange={value => this.setState({ value })} />
-    );
+        onChange={value => this.setState({ value })}
+      />
+    )
   }
 }
 ```
 
 To format labels:
+
 ```jsx
 <InputRange
   formatLabel={value => `${value}cm`}
   value={this.state.value}
-  onChange={value => this.setState({ value })} />
+  onChange={value => this.setState({ value })}
+/>
 ```
 
 To specify the amount of increment/decrement
+
 ```jsx
-<InputRange
-  step={2}
-  value={this.state.value}
-  onChange={value => this.setState({ value })} />
+<InputRange step={2} value={this.state.value} onChange={value => this.setState({ value })} />
 ```
 
 ## API
@@ -144,9 +146,22 @@ The default increment/decrement of your component is 1. You can change that by s
 
 Set the current value for your component. If only a single number is provided, only a single slider will get rendered. If a range object (min/max) is provided, two sliders will get rendered
 
+### Track: Function
+
+Override default Track Component
+
+#### Slider: Function
+
+Override default Slider Component
+
+#### Label: Function
+
+Override default Label Component
+
 ### Types
 
 #### InputRangeClassNames
+
 * activeTrack: string
 * disabledInputRange: string
 * inputRange: string
@@ -159,23 +174,27 @@ Set the current value for your component. If only a single number is provided, o
 * valueLabel: string
 
 #### Range
+
 * max: number
 * min: number
 
 ## Development
 
-If you want to work on this project locally, you need to grab all of its dependencies, for which 
+If you want to work on this project locally, you need to grab all of its dependencies, for which
 we recommend using [yarn]. You can find the instructions to setup yarn [here](https://yarnpkg.com/docs/install).
+
 ```
 yarn install
 ```
 
 After that, you should be able run to preview
+
 ```
 yarn dev
 ```
 
 To test
+
 ```
 yarn test
 ```
