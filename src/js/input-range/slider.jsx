@@ -28,6 +28,7 @@ export default class Slider extends React.Component {
     return {
       ariaLabelledby: PropTypes.string,
       ariaControls: PropTypes.string,
+      children: PropTypes.any,
       classNames: PropTypes.objectOf(PropTypes.string).isRequired,
       formatLabel: PropTypes.func,
       Label: PropTypes.func,
@@ -249,7 +250,7 @@ export default class Slider extends React.Component {
    * @return {JSX.Element}
    */
   render() {
-    const { Label } = this.props;
+    const { children, Label } = this.props;
     const style = this.getStyle();
 
     return (
@@ -276,7 +277,9 @@ export default class Slider extends React.Component {
           onMouseDown={this.handleMouseDown}
           onTouchStart={this.handleTouchStart}
           role="slider"
-          tabIndex="0" />
+          tabIndex="0">
+          {children}
+        </div>
       </span>
     );
   }

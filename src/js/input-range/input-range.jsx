@@ -25,6 +25,7 @@ export default class InputRange extends React.Component {
     return {
       ariaControls: PropTypes.string,
       ariaLabelledby: PropTypes.string,
+      children: PropTypes.any,
       classNames: PropTypes.objectOf(PropTypes.string),
       disabled: PropTypes.bool,
       draggableTrack: PropTypes.bool,
@@ -647,7 +648,7 @@ export default class InputRange extends React.Component {
    * @return {JSX.Element}
    */
   render() {
-    const { Label, Track } = this.props;
+    const { children, Label, Track } = this.props;
     const componentClassName = this.getComponentClassName();
     const values = valueTransformer.getValueFromProps(this.props, this.isMultiValue());
     const percentages = valueTransformer.getPercentagesFromValues(values, this.props.minValue, this.props.maxValue);
@@ -686,6 +687,7 @@ export default class InputRange extends React.Component {
           {this.props.maxValue}
         </Label>
 
+        {children}
         {this.renderHiddenInputs()}
       </div>
     );
