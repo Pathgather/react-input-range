@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+type ComponentType<T> = React.SFC<T> | React.ComponentClass<T>;
+type LabelType = "min" | "max" | "value";
+
 export interface Range {
   max: number;
   min: number;
@@ -18,22 +21,63 @@ export interface InputRangeClassNames {
   valueLabel: string;
 }
 
+type FormatLabel = (value: number, type: LabelType) => string;
+
 export interface InputRangeProps {
-  ariaLabelledby?: string;
   ariaControls?: string;
+  ariaLabelledby?: string;
   classNames?: InputRangeClassNames;
   disabled?: boolean;
   draggableTrack?: boolean;
-  formatLabel?: (value: number, type: string) => string;
+  formatLabel?: FormatLabel;
+  Label?: ComponentType<LabelProps>;
   maxValue?: number;
   minValue?: number;
   name?: string;
   onChange: (value: Range | number) => void;
-  onChangeStart?: (value: Range | number) => void;
   onChangeComplete?: (value: Range | number) => void;
+  onChangeStart?: (value: Range | number) => void;
+  Slider?: ComponentType<SliderProps>;
   step?: number;
+  Track?: ComponentType<TrackProps>;
   value: Range | number;
 }
 
-export default class InputRange extends React.Component<InputRangeProps, any> {
+export default class InputRange extends React.Component<InputRangeProps, void> {
+}
+
+export interface LabelProps {
+  children: React.ReactNode;
+  classNames: InputRangeClassNames;
+  formatLabel: FormatLabel;
+  type: LabelType;
+}
+
+export class Label extends React.Component<LabelProps, void> {
+}
+
+export interface SliderProps {
+  ariaControls?: string;
+  ariaLabelledby?: string;
+  classNames?: InputRangeClassNames;
+  formatLabel?: FormatLabel;
+  Label: ComponentType<LabelProps>
+  maxValue?: number;
+  minValue?: number;
+  value: number;
+}
+
+export class Slider extends React.Component<SliderProps, void> {
+}
+
+export interface TrackProps {
+  children: React.ReactNode;
+  classNames: InputRangeClassNames;
+  draggableTrack?: boolean;
+  onTrackDrag?: Function; // ??
+  onTrackMouseDown: Function; // ??
+  percentages: Range;
+}
+
+export class Track extends React.Component<TrackProps, void> {
 }
