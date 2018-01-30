@@ -43,7 +43,7 @@ export interface InputRangeProps {
   value: Range | number;
 }
 
-export default class InputRange extends React.Component<InputRangeProps, void> {
+export default class InputRange extends React.Component<InputRangeProps, {}> {
 }
 
 export interface LabelProps {
@@ -53,7 +53,7 @@ export interface LabelProps {
   type: LabelType;
 }
 
-export class Label extends React.Component<LabelProps, void> {
+export class Label extends React.Component<LabelProps, {}> {
 }
 
 export interface SliderProps {
@@ -67,7 +67,7 @@ export interface SliderProps {
   value: number;
 }
 
-export class Slider extends React.Component<SliderProps, void> {
+export class Slider extends React.Component<SliderProps, {}> {
 }
 
 export interface TrackProps {
@@ -79,5 +79,5 @@ export interface TrackProps {
   percentages: Range;
 }
 
-export class Track extends React.Component<TrackProps, void> {
+export class Track extends React.Component<TrackProps, {}> {
 }
